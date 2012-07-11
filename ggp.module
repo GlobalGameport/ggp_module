@@ -1,0 +1,17 @@
+<?php 
+
+function ggp_menu(){
+$items = array();
+
+$items['admin/config/ggp'] = array(
+    'title' => 'Global Gameport',
+    'description' => 'Modules related to Global Gameport.',
+    'position' => 'right',
+    'weight' => 0,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+	'file path' => drupal_get_path('module', 'system'),
+  );
+return $items;
+}

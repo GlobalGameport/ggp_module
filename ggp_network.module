@@ -1,0 +1,58 @@
+<?php
+function ggp_network_init() {
+	drupal_add_js('http://static.globalgameport.com/network/leiste.min.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 5));
+	drupal_add_js("jQuery.ggpleiste({adcont: 'h1dden'});", array('type' => 'inline', 'scope' => 'footer', 'weight' => 6));
+	//if ($uid = $GLOBALS['user']->uid) {
+	//	$u = user_load($uid);
+	//	$js_user = array();
+	//	$js_user["logged_in"] = true;
+	//	$js_user["uid"] = $u->uid;
+	//	$js_user["username"] = $u->name;
+	//	$js_user["profileimage"] = $u->picture;
+	//	$js_user["profile"] = "";
+	//} else {
+	//	$js_user = array(
+	//		"logged_in" => false,
+	//		"log_in_link" => "/cas",
+	//	);
+	//}
+	//drupal_add_js(array('ggp_user' => $js_user), 'setting');
+}
+function ggp_network_process_html(&$variables) {
+	$variables['page_bottom'] .= '<div id="h1dden" style="overflow: hidden; width: 728px; height: 90px; margin: 0pt; padding: 0pt; position: absolute; top: -90px; left: -728px;">';
+	$variables['page_bottom'] .= '	<script type="text/javascript">';
+	$variables['page_bottom'] .= '	/* <![CDATA[ */';
+	$variables['page_bottom'] .= variable_get('ggp_network_leaderboard_code');
+	$variables['page_bottom'] .= '	/* ]]> */ ';
+	$variables['page_bottom'] .= '	</script>';
+	$variables['page_bottom'] .= '	</div>';
+	
+}
+
+function ggp_network_menu(){
+  $items = array();
+
+  $items['admin/config/ggp/advertising'] = array(
+    'title' => t('GGP Werbung'),
+    'description' => 'Set GGP Advertisment Settings',
+    'access callback' => 'user_access',
+    'access arguments' => array('access administration pages'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ggp_network_form'),
+
+  );
+
+  return $items;
+}
+function ggp_network_form() {
+  $form = array();
+
+
+  $form['ggp_network_leaderboard_code'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Leaderboard Code'),
+    '#default_value' => variable_get('ggp_network_leaderboard_code'),
+    '#description' => t("Code for Leaderboard Ad."),
+  );
+  return system_settings_form($form);
+}
