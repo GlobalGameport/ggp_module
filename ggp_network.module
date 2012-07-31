@@ -70,7 +70,7 @@ function _ggp_network_active() {
   // Compare with the internal and path alias (if any).
   $page_match = drupal_match_path($path, $nl_pages);
   if ($path != $_GET['q']) {
-    $page_match = $page_match || drupal_match_path($_GET['q'], $colorbox_pages);
+    $page_match = $page_match || drupal_match_path($_GET['q'], $nl_pages);
   }
 
   return !$page_match;
