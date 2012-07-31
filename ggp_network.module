@@ -66,7 +66,7 @@ function _ggp_network_active() {
 
   // Code from the block_list funtion in block.module.
   $path = drupal_get_path_alias($_GET['q']);
-  $nl_pages = variable_get('ggp_network_pages', "admin*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit");
+  $nl_pages = variable_get('ggp_network_pages', "admin*\nimg_assist*\nmedia/*\nimce*\nnode/add/*\nnode/*/edit");
   // Compare with the internal and path alias (if any).
   $page_match = drupal_match_path($path, $nl_pages);
   if ($path != $_GET['q']) {
