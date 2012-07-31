@@ -76,7 +76,7 @@ function _ggp_network_active() {
   return !$page_match;
 }
 
-funcrion _ggp_network_doheader() {
+function _ggp_network_doheader() {
 	static $already_added = FALSE;
 	if ($already_added) {
 	return; // Don't add the JavaScript and CSS multiple times.
