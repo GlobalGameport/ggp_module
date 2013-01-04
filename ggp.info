@@ -4,7 +4,11 @@ core = 7.x
 
 package = Global Gameport
 
+<<<<<<< HEAD
 
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "ggp"
+=======
+project = "ggp
+>>>>>>> 6934995c303ff3854299a6d621978f5fe12a4680

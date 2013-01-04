@@ -12,7 +12,7 @@
 					type: "GET",
 					url: document.location.protocol+'//'+settings.board_url+'/external.php?type=js'+fids,
 					dataType: "script",
-					scriptCharset: 'ISO-8859-1',
+					//scriptCharset: 'ISO-8859-1',
 					success: function(s) {
 						$(threads).each(function(i, e) { 
 							if (i <= settings.maxposts) {
@@ -23,8 +23,8 @@
 								if (title1.length > 41){
 										title1 = title1.slice(0,40) + "...";
 								} 
-								var title	 	= $('<span>')addClass('title').text(title1);	
-								var date 		= $('<span>').addClass('desc').text(e.threaddate + ' um ' + e.threaddate + ' Uhr, von ' + e.poster);
+								var title = $('<span>').addClass('title').text(title1);	
+								var date = $('<span>').addClass('desc').text(e.threaddate + ' um ' + e.threadtime + ' Uhr, von ' + e.poster);
 								wrapper.append(title);	
 								wrapper.append(date); 
 								latestpost.append(wrapper);
@@ -35,6 +35,7 @@
 						var path = (settings.more == "") ? '/index.php' : '/forumdisplay.php?'+settings.more;
 						var uri = document.location.protocol+'//'+settings.board_url + path;
 						$("#latestposts").append($('<span>').html('<a href="'+uri+'">Mehr...</a>')));
+
 					}
 				});
 			}
