@@ -32,7 +32,8 @@
 							}
 						});
 						$("#latestposts").data('run', true);
-						var uri = document.location.protocol+'//'+settings.board_url + (settings.more == "") ? 'index.php' : '/forumdisplay.php?'+settings.more;
+						var path = (settings.more == "") ? '/index.php' : '/forumdisplay.php?'+settings.more;
+						var uri = document.location.protocol+'//'+settings.board_url + path;
 						$("#latestposts").append($('<span>').html('<a href="'+uri+'">Mehr...</a>')));
 					}
 				});
