@@ -1,0 +1,25 @@
+language: php
+php:
+  - 5.3
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+before_script:
+ - mysql -e 'create database drupal;'
+ - pyrus channel-discover pear.drush.org
+ - pyrus install drush/drush
+ - phpenv rehash
+ - drush make https://gist.github.com/raw/4542463/cc5d77ac3d5c8d313515b1d2b9b9ce244bedcdd2/ggp.make ../module.ggp.com
+ - cd ../module.ggp.com
+ - sudo chmod -R 777 sites/all/modules
+ - drush si standard --db-url=mysql://root:@localhost/drupal --yes
+ - drush en --yes simpletest ggp ggp_board ggp_network
+ - drush cc all --yes
+ - drush runserver --server=builtin 8080 &
+ - sleep 4
+ - drush vset --yes simpletest_verbose FALSE
+
+script: drush test-run Ggp --xml --uri=http://127.0.0.1:8080

@@ -1,0 +1,33 @@
+<?php
+/**
+* @file
+* Tests for ggp.module.
+*/
+/**
+* Tests the Syslog module functionality.
+*/
+class GgpTestCase extends DrupalWebTestCase {
+    public static function getInfo() {
+        return array(
+            'name' => 'GGP functionality',
+            'description' => 'Test if ggp is working.',
+            'group' => 'Global Gameport'
+        );
+    }
+    function setUp() {
+        parent::setUp('ggp');
+        parent::setUp('ggp_board');
+        parent::setUp('ggp_network');
+    }
+    /**
+    * Tests the syslog settings page.
+    */
+    function testSettings() {
+        $admin_user = $this->drupalCreateUser(array('administer site configuration'));
+        $this->drupalLogin($admin_user);
+
+        $this->drupalGet(/);
+        $this->assertRaw("<script>jQuery.ggpleiste({adcont: 'h1dden'});</script>", 'Advertisment Code is embedded.');
+        $this->assertNoPattern('|[Ee]rror|', 'Error/error is not on current page.');
+    }
+}
