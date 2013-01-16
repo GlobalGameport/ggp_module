@@ -13,7 +13,9 @@ before_script:
  - pyrus install drush/drush
  - phpenv rehash
  - drush make https://gist.github.com/raw/4542463/cc5d77ac3d5c8d313515b1d2b9b9ce244bedcdd2/ggp.make ../module.ggp.com
+ - pwd
  - cd ../module.ggp.com
+ - pwd
  - sudo chmod -R 777 sites/all/modules
  - drush si standard --db-url=mysql://root:@localhost/drupal --yes
  - drush en --yes simpletest ggp ggp_board ggp_network
