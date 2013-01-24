@@ -32,7 +32,7 @@ function ggp_menu(){
 	$items['ueber-global-gameport'] = array(
 	    'title' => 'Über Global Gameport',
 	    'description' => 'Über Global Gameport',
-	    'page callback' => 'system_admin_menu_block_page',
+	    'page callback' => 'ggp_get_content',
 	    'page arguments' => array('about'),
 	    'access callback' => TRUE,
 	    'type' => MENU_CALLBACK,
