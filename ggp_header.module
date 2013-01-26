@@ -138,18 +138,18 @@ function ggp_header_countdown_form($form, &$form_state) {
 
   $settings['countdown'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Show twitter icon'),
+    '#title' => t('Show countdown'),
     '#return_value' => 1,
     '#default_value' => $saved_settings['countdown'],
     );
   $settings['date'] = array(
     '#type' => 'textfield',
-    '#title' => t('Link to the Twitter Wall'),
+    '#title' => t('Date to count to'),
     '#default_value' => $saved_settings['date'],
     '#size' => 50,
     '#maxlength' => 50,
   );
   $form['#tree'] = TRUE;
-  $form['ggp_social_settings'] = $settings;
+  $form['ggp_countdown_settings'] = $settings;
   return system_settings_form($form);
 }
