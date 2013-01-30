@@ -56,7 +56,7 @@ function ggp_header_block_view($delta = '') {
 }  // end ggp_forum_block_view
 
 
-function ggp_social_menu(){
+function ggp_header_menu(){
   $items = array();
 
   $items['admin/config/ggp/social'] = array(

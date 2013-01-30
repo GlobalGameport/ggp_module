@@ -4,19 +4,18 @@
 
 
 	Drupal.behaviors.ggp_board = {
-		attach: function() {
-			var settings = Drupal.settings.ggp_board;
-			var fids = (settings.ids != 0) ? '&forumids='+settings.ids : '';
+		attach: function(context, settings) {
+			var fids = (settings.ggp_board.ids != 0) ? '&forumids='+settings.ggp_board.ids : '';
 			if($("#latestposts").data('run') != true) {
 				$.ajax({
 					type: "GET",
-					url: document.location.protocol+'//'+settings.board_url+'/external.php?type=js'+fids,
+					url: document.location.protocol+'//'+settings.ggp_board.board_url+'/external.php?type=js&lastpost=true'+fids,
 					dataType: "script",
 					//scriptCharset: 'ISO-8859-1',
 					success: function(s) {
 						$(threads).each(function(i, e) {
-							if (i <= settings.maxposts) {
-								var latestpost = $('<a>').addClass('latestposts').attr('href', document.location.protocol+'//'+settings.board_url+'/showthread.php?t=' + e.threadid ).attr('target', '_blank');
+							if (i <= settings.ggp_board.maxposts) {
+								var latestpost = $('<a>').addClass('latestposts').attr('href', document.location.protocol+'//'+settings.ggp_board.board_url+'/showthread.php?t=' + e.threadid ).attr('target', '_blank');
 								var wrapper = $('<span>').addClass('latestposts-wrapper');
 								var title1 = new String();
 								title1 = e.title;
@@ -32,8 +31,8 @@
 							}
 						});
 						$("#latestposts").data('run', true);
-						var path = (settings.more == "") ? '/index.php' : '/forumdisplay.php?'+settings.more;
-						var uri = document.location.protocol+'//'+settings.board_url + path;
+						var path = (settings.ggp_board.more == "") ? '/index.php' : '/forumdisplay.php?'+settings.ggp_board.more;
+						var uri = document.location.protocol+'//'+settings.ggp_board.board_url + path;
 						$("#latestposts").append($('<span>').html('<a href="'+uri+'">Mehr...</a>'));
 
 					}
