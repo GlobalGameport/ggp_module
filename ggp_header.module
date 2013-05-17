@@ -32,12 +32,12 @@ function ggp_header_block_view($delta = '') {
       $block['content'] .= '<div><a id="twitter1" target="_blank" href="' . $saved_settings['twitter_link'] . '"><span class="pop_info">Folge uns<br />bei Twitter!</span></a></div>';
     }
     if($saved_settings['youtube']) {
-    $block['content'] .= '<div><a id="youtube1" target="_blank" href="' . $saved_settings['youtube_link'] . '"><span class="pop_info">Abonniere unseren You Tube-Kanal!</span></a><div>';
+    $block['content'] .= '<div><a id="youtube1" target="_blank" href="' . $saved_settings['youtube_link'] . '"><span class="pop_info">Abonniere unseren You Tube-Kanal!</span></a></div>';
     }
     if($saved_settings['facebook']) {
-      $block['content'] .= '<div><a id="facebook1" target="_blank" href="' . $saved_settings['facebook_link'] . '"><span class="pop_info">Like unsere Facebook-Page!</span></a><div>';
+      $block['content'] .= '<div><a id="facebook1" target="_blank" href="' . $saved_settings['facebook_link'] . '"><span class="pop_info">Like unsere Facebook-Page!</span></a></div>';
     }
-    $block['content'] .= '<div><a id="rss1" target="_blank" href="rss.xml"><span class="pop_info">Abonniere unseren RSS-Feed!</span></a><div>';
+    $block['content'] .= '<div><a id="rss1" href="/rss.xml" target="_blank" ><span class="pop_info">Abonniere unseren RSS-Feed!</span></a><div>';
     $block['content'] .= '</div></div>';
   break;
   case 'ggp_countdown':
