@@ -26,6 +26,7 @@ function ggp_header_block_view($delta = '') {
 
   switch ($delta) {
   case 'ggp_social':
+    drupal_add_css(drupal_get_path('module', 'ggp_header') . '/ggp_header.css');
     $saved_settings = variable_get('ggp_social_settings');
     $block['content'] = '<div id="folge_uns"><div id="Lmenu_folge_uns">';
     if($saved_settings['twitter']) {

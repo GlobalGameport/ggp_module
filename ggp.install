@@ -10,4 +10,12 @@
  */
 function ggp_update_7101(&$sandbox) {
   variable_del('update_notify_emails');
+
+
+
+/**
+ * Update Theme Settings. Enable social
+ */
+function ggp_update_7102(&$sandbox) {
+  variable_del('update_notify_emails');
 }
