@@ -25,8 +25,4 @@ function ggp_update_7102(&$sandbox) {
 		$form_state['values'] = array();
 		drupal_form_submit('system_theme_settings', $form_state);
 	}
-	module_enable(array('secureshare', 'secureshare_fields'));
-	variable_set('secureshare_fields_node_article', 'profile');
-
-	field_bundle_settings('node', 'article' , array('extra_fields' => array('display' => array('secureshare' => array('weight' => 0, 'visible' => FALSE)))));
 }
